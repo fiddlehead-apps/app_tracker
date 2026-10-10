@@ -1,0 +1,12 @@
+// Tally build configuration.
+//
+// 1. Set DEVELOPMENT_TEAM to your Apple Developer Team ID
+//    (Xcode → Settings → Accounts, or developer.apple.com → Membership).
+// 2. BUNDLE_ID_PREFIX must be unique to you. Everything else derives from it:
+//      App:            $(BUNDLE_ID_PREFIX).tally
+//      Widget:         $(BUNDLE_ID_PREFIX).tally.widget
+//      App Group:      group.$(BUNDLE_ID_PREFIX).tally
+//      iCloud:         iCloud.$(BUNDLE_ID_PREFIX).tally
+
+DEVELOPMENT_TEAM =
+BUNDLE_ID_PREFIX = org.christophschneider
