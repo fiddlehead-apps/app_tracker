@@ -7,6 +7,7 @@ Count anything, with the details you care about. Native SwiftUI app, iOS 17+.
 - **+1 per tracker**: either logs instantly with default values (Undo / Details in the toast) or opens a form. Optional daily goal with progress ring and streak.
 - **Detail view**: today / week / month / all-time, 15-week calendar heatmap (tap a day to filter), **timeline line charts** over 14 / 30 / 90 days for the entry count and every field (text fields get one line per value), entry list.
 - **Widgets**: small (pick a tracker) and medium (first four trackers), both with an interactive +1 button. The +1 action is also available in the Shortcuts app.
+- **Apple Watch app**: tap +1 (or swipe a tracker to the right) and the current time is saved on the watch right away. Then optionally pick values per field from the last few values; the rest can be filled in later on the iPhone. Talks to the iPhone over WatchConnectivity, so it works without iCloud and queues entries while the phone is out of reach.
 - **iCloud sync** via SwiftData + CloudKit (private database).
 - **CSV import/export**, compatible with the export of the Tally web page (`counter`/`person` columns are understood).
 - English and German.
@@ -32,6 +33,8 @@ Sync only works with a real Apple Account on a device or simulator that's signed
 ```
 Config/        xcconfig, Info.plists, entitlements
 Shared/        Code used by app and widget: SwiftData models, store, App Intents, helpers, strings
+WatchSync/     Code used by app, widget and watch: colors, iPhone ↔ Watch message format
+TallyWatch/    Apple Watch app
 Tally/         App: views, templates, CSV
 TallyWidget/   Widget extension
 scripts/       Localization helper

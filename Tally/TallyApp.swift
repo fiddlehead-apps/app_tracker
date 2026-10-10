@@ -4,6 +4,10 @@ import WidgetKit
 
 @main
 struct TallyApp: App {
+    init() {
+        WatchBridge.shared.start()
+    }
+
     var body: some Scene {
         WindowGroup {
             RootView()
@@ -29,6 +33,7 @@ struct RootView: View {
                 case .active where wasInBackground:
                     wasInBackground = false
                     refreshID = UUID()
+                    WatchBridge.shared.pushContext()
                 default:
                     break
                 }

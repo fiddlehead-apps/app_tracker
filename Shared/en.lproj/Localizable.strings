@@ -5,6 +5,7 @@
 "%lld" = "%lld";
 "%lld of 30 days" = "%lld of 30 days";
 "%lld stars" = "%lld stars";
+"+1" = "+1";
 "+1 button" = "+1 button";
 "0" = "0";
 "14 d" = "14 d";
@@ -40,6 +41,7 @@
 "Coffee" = "Coffee";
 "Color" = "Color";
 "Create a tracker" = "Create a tracker";
+"Create a tracker in Tally on your iPhone." = "Create a tracker in Tally on your iPhone.";
 "Cup" = "Cup";
 "Daily goal" = "Daily goal";
 "Data" = "Data";
@@ -55,6 +57,7 @@
 "Delete this entry?" = "Delete this entry?";
 "Delete tracker" = "Delete tracker";
 "Details" = "Details";
+"Details (optional)" = "Details (optional)";
 "Distance" = "Distance";
 "Done" = "Done";
 "Dose" = "Dose";
@@ -62,7 +65,6 @@
 "Duration" = "Duration";
 "Eating out" = "Eating out";
 "Edit" = "Edit";
-"Edit entry" = "Edit entry";
 "Edit the widget to pick a tracker." = "Edit the widget to pick a tracker.";
 "Edit tracker" = "Edit tracker";
 "Entries" = "Entries";
@@ -100,6 +102,7 @@
 "Just counts" = "Just counts";
 "Language" = "Language";
 "Language practice" = "Language practice";
+"Later on iPhone" = "Later on iPhone";
 "Learning" = "Learning";
 "Location" = "Location";
 "Log %@" = "Log %@";
@@ -110,6 +113,8 @@
 "Log with details" = "Log with details";
 "Logged" = "Logged";
 "Logged %@" = "Logged %@";
+"Logged at %@" = "Logged at %@";
+"Logged on this watch today" = "Logged on this watch today";
 "Logging" = "Logging";
 "Medication" = "Medication";
 "Meditation" = "Meditation";
@@ -138,6 +143,7 @@
 "On" = "On";
 "One tap logs right away with the default values. You can add details afterwards." = "One tap logs right away with the default values. You can add details afterwards.";
 "One to five stars." = "One to five stars.";
+"Open Tally on your iPhone once to load your trackers." = "Open Tally on your iPhone once to load your trackers.";
 "Open Tally to create a tracker." = "Open Tally to create a tracker.";
 "Option" = "Option";
 "Optional" = "Optional";
@@ -197,12 +203,15 @@
 "The file needs a \"tracker\" or \"counter\" column and a \"date\" or \"event_date\" column." = "The file needs a \"tracker\" or \"counter\" column and a \"date\" or \"event_date\" column.";
 "This build stores data on this device only. Set a development team and enable iCloud to sync." = "This build stores data on this device only. Set a development team and enable iCloud to sync.";
 "This month" = "This month";
+"This tracker no longer exists." = "This tracker no longer exists.";
 "This week" = "This week";
 "Time" = "Time";
 "Timeline" = "Timeline";
 "Timeline shows" = "Timeline shows";
 "Today" = "Today";
 "Today's count with a +1 button." = "Today's count with a +1 button.";
+"Today: %lld" = "Today: %lld";
+"Today: %lld of %lld" = "Today: %lld of %lld";
 "Took medication" = "Took medication";
 "Topic" = "Topic";
 "Total" = "Total";
@@ -226,6 +235,7 @@
 "Yes / No" = "Yes / No";
 "Yoga" = "Yoga";
 "Yoga & stretching" = "Yoga & stretching";
+"You can add the rest later on your iPhone." = "You can add the rest later on your iPhone.";
 "Your first four trackers, each with a +1 button." = "Your first four trackers, each with a +1 button.";
 "iCloud sync" = "iCloud sync";
 "ml, km, €" = "ml, km, €";

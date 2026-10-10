@@ -214,20 +214,22 @@ final class EntryValue {
 
     func display(as kind: FieldKind, unit: String = "") -> String {
         switch kind {
-        case .text, .choice:
-            return text
-        case .number:
-            guard let number else { return "" }
+        case .text, .choice: return text
+        default: return number.map { Self.format($0, kind: kind, unit: unit) } ?? ""
+        }
+    }
+
+    /// Display text for a numeric value of a number, duration, rating or yes/no field.
+    static func format(_ number: Double, kind: FieldKind, unit: String = "") -> String {
+        switch kind {
+        case .text, .choice, .number:
             return unit.isEmpty ? Fmt.number(number) : "\(Fmt.number(number)) \(unit)"
         case .duration:
-            guard let number else { return "" }
             return Fmt.duration(minutes: number)
         case .rating:
-            guard let number else { return "" }
             let n = max(0, min(5, Int(number.rounded())))
             return String(repeating: "★", count: n) + String(repeating: "☆", count: 5 - n)
         case .toggle:
-            guard let number else { return "" }
             return number >= 0.5 ? String(localized: "Yes") : String(localized: "No")
         }
     }
