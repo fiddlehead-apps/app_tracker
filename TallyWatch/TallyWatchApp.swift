@@ -33,8 +33,8 @@ struct TrackerListView: View {
                             .font(.title2)
                             .foregroundStyle(.secondary)
                         Text(store.context == nil
-                             ? "Open Tally on your iPhone once to load your trackers."
-                             : "Create a tracker in Tally on your iPhone.")
+                             ? "Open Sola Tracker on your iPhone once to load your trackers."
+                             : "Create a tracker in Sola Tracker on your iPhone.")
                             .font(.footnote)
                             .multilineTextAlignment(.center)
                             .foregroundStyle(.secondary)
@@ -55,7 +55,7 @@ struct TrackerListView: View {
                 }
             }
         }
-        .navigationTitle("Tally")
+        .navigationTitle("Sola Tracker")
         .navigationDestination(for: UUID.self) { id in
             TrackerLogView(trackerID: id)
         }

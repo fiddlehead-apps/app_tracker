@@ -246,7 +246,7 @@ struct EmptyWidgetView: View {
             Image(systemName: "plus.circle")
                 .font(.title2)
                 .foregroundStyle(.secondary)
-            Text(hasAnyTracker ? "Edit the widget to pick a tracker." : "Open Tally to create a tracker.")
+            Text(hasAnyTracker ? "Edit the widget to pick a tracker." : "Open Sola Tracker to create a tracker.")
                 .font(.caption)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)

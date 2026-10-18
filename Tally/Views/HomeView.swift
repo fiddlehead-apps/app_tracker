@@ -31,7 +31,7 @@ struct HomeView: View {
         NavigationStack(path: $path) {
             TrackerListView(sheet: $sheet, toast: $toast, path: $path)
                 .id(refreshID)
-                .navigationTitle("Tally")
+                .navigationTitle("Sola Tracker")
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Button { sheet = .settings } label: {

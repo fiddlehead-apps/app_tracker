@@ -41,7 +41,7 @@
 "Coffee" = "Coffee";
 "Color" = "Color";
 "Create a tracker" = "Create a tracker";
-"Create a tracker in Tally on your iPhone." = "Create a tracker in Tally on your iPhone.";
+"Create a tracker in Sola Tracker on your iPhone." = "Create a tracker in Sola Tracker on your iPhone.";
 "Cup" = "Cup";
 "Daily goal" = "Daily goal";
 "Data" = "Data";
@@ -143,8 +143,8 @@
 "On" = "On";
 "One tap logs right away with the default values. You can add details afterwards." = "One tap logs right away with the default values. You can add details afterwards.";
 "One to five stars." = "One to five stars.";
-"Open Tally on your iPhone once to load your trackers." = "Open Tally on your iPhone once to load your trackers.";
-"Open Tally to create a tracker." = "Open Tally to create a tracker.";
+"Open Sola Tracker on your iPhone once to load your trackers." = "Open Sola Tracker on your iPhone once to load your trackers.";
+"Open Sola Tracker to create a tracker." = "Open Sola Tracker to create a tracker.";
 "Option" = "Option";
 "Optional" = "Optional";
 "Options" = "Options";
@@ -190,7 +190,7 @@
 "Style" = "Style";
 "Sum per day" = "Sum per day";
 "Sweets & snacks" = "Sweets & snacks";
-"Tally" = "Tally";
+"Sola Tracker" = "Sola Tracker";
 "Tap a day to filter" = "Tap a day to filter";
 "Tap or drag on the chart to see a day." = "Tap or drag on the chart to see a day.";
 "Tap the selected star again for no default." = "Tap the selected star again for no default.";

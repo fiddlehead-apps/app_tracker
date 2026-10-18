@@ -1,4 +1,6 @@
-# Tally for iOS
+# Sola Tracker (iOS, watchOS)
+
+The app is called **Sola Tracker** in every language. The Xcode project, targets, bundle IDs and data store are still named `Tally`.
 
 Count anything, with the details you care about. Native SwiftUI app, iOS 17+.
 
