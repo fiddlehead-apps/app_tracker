@@ -4,7 +4,7 @@ import SwiftUI
 import WidgetKit
 
 @main
-struct TallyWidgetBundle: WidgetBundle {
+struct SolaTrackerWidgetBundle: WidgetBundle {
     var body: some Widget {
         TrackerWidget()
         OverviewWidget()
@@ -31,7 +31,7 @@ struct TrackerSnapshot: Identifiable {
 enum WidgetData {
     static func snapshots(ids: [UUID]? = nil, limit: Int = 4) -> [TrackerSnapshot] {
         let context = Persistence.shared.mainContext
-        let trackers = (try? context.fetch(FetchDescriptor<Tracker>(sortBy: [SortDescriptor(\.order)]))) ?? []
+        let trackers = (try? context.fetch(Tracker.visible)) ?? []
         let chosen = ids.map { ids in trackers.filter { ids.contains($0.id) } } ?? Array(trackers.prefix(limit))
         let start = Day.start(Date())
         let entries = (try? context.fetch(FetchDescriptor<Entry>(predicate: #Predicate { $0.date >= start }))) ?? []
@@ -85,7 +85,7 @@ struct SingleProvider: AppIntentTimelineProvider {
 
 struct TrackerWidget: Widget {
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: "TallyTracker", intent: SelectTrackerIntent.self, provider: SingleProvider()) { entry in
+        AppIntentConfiguration(kind: "SolaTracker", intent: SelectTrackerIntent.self, provider: SingleProvider()) { entry in
             SingleTrackerView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
@@ -167,7 +167,7 @@ struct OverviewProvider: TimelineProvider {
 
 struct OverviewWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "TallyOverview", provider: OverviewProvider()) { entry in
+        StaticConfiguration(kind: "SolaTrackerOverview", provider: OverviewProvider()) { entry in
             OverviewView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }

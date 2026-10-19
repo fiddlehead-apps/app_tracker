@@ -32,14 +32,15 @@ struct TrackerQuery: EntityQuery {
         try allTrackers().filter { identifiers.contains($0.id) }.map(TrackerEntity.init)
     }
 
+    /// Hidden trackers aren't offered, but ones already picked in a shortcut keep working.
     @MainActor
     func suggestedEntities() async throws -> [TrackerEntity] {
-        try allTrackers().map(TrackerEntity.init)
+        try Persistence.shared.mainContext.fetch(Tracker.visible).map(TrackerEntity.init)
     }
 
     @MainActor
     func defaultResult() async -> TrackerEntity? {
-        try? allTrackers().first.map(TrackerEntity.init)
+        try? Persistence.shared.mainContext.fetch(Tracker.visible).first.map(TrackerEntity.init)
     }
 
     @MainActor

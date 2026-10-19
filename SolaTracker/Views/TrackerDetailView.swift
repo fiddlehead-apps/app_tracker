@@ -34,6 +34,11 @@ struct TrackerDetailView: View {
         .tint(tracker.color)
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
+                if tracker.isHidden {
+                    Button { tracker.setHidden(false, in: context) } label: {
+                        Label("Unhide", systemImage: "eye")
+                    }
+                }
                 Button { sheet = .editTracker(tracker) } label: {
                     Label("Edit tracker", systemImage: "slider.horizontal.3")
                 }
@@ -206,7 +211,7 @@ struct StatsRow: View {
     }
 }
 
-/// 15 weeks of days, like the web version. Tap a day to filter the list.
+/// 15 weeks of days. Tap a day to filter the list.
 struct CalendarHeatmap: View {
     let counts: [Date: Int]
     let color: Color

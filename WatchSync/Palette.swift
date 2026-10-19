@@ -5,7 +5,7 @@ import UIKit
 
 /// Tracker colors, shared by the iPhone app, the widget and the Watch app.
 enum Palette {
-    /// (light, dark) pairs. Index 0 matches the web Tally's default blue.
+    /// (light, dark) pairs. Index 0 is the default blue.
     static let pairs: [(UInt32, UInt32)] = [
         (0x3547D4, 0x8A9BFF), // indigo
         (0x1E8A5A, 0x5FD39B), // green

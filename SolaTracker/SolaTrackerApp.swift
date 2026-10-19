@@ -3,7 +3,10 @@ import SwiftUI
 import WidgetKit
 
 @main
-struct TallyApp: App {
+struct SolaTrackerApp: App {
+    /// Replaced when the user turns iCloud sync on or off (see Persistence.apply).
+    @State private var container = Persistence.shared
+
     init() {
         WatchBridge.shared.start()
     }
@@ -11,8 +14,15 @@ struct TallyApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+                // A fresh view tree, so no screen keeps objects from the old store.
+                .id(ObjectIdentifier(container))
+                .onReceive(NotificationCenter.default.publisher(for: Persistence.didReopen)) { _ in
+                    container = Persistence.shared
+                    WidgetCenter.shared.reloadAllTimelines()
+                    WatchBridge.shared.pushContext()
+                }
         }
-        .modelContainer(Persistence.shared)
+        .modelContainer(container)
     }
 }
 
@@ -38,5 +48,7 @@ struct RootView: View {
                     break
                 }
             }
+            // Retries an iCloud deletion that didn't go through last time.
+            .task { Persistence.apply() }
     }
 }

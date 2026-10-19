@@ -48,7 +48,7 @@ final class WatchBridge: NSObject {
 
     func makeContext() -> WatchContext {
         let context = Persistence.shared.mainContext
-        let trackers = (try? context.fetch(FetchDescriptor<Tracker>(sortBy: [SortDescriptor(\.order)]))) ?? []
+        let trackers = (try? context.fetch(Tracker.visible)) ?? []
         let start = Day.start(Date()), end = Day.tomorrow
         let today = (try? context.fetch(FetchDescriptor<Entry>(predicate: #Predicate { $0.date >= start }))) ?? []
         var todayIDs: [UUID: [UUID]] = [:]

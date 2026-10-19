@@ -78,6 +78,8 @@ final class Tracker {
     var dailyGoal: Int = 0
     var templateKey: String = ""
     var createdAt: Date = Date()
+    /// Hidden trackers only show up behind Face ID, not on the home screen, in widgets or on the watch.
+    var isHidden: Bool = false
 
     @Relationship(deleteRule: .cascade, inverse: \TrackerField.tracker)
     var fields: [TrackerField]? = []
@@ -235,6 +237,13 @@ final class EntryValue {
     }
 }
 
-enum TallySchema {
+extension Tracker {
+    /// The trackers that aren't hidden, in list order.
+    static var visible: FetchDescriptor<Tracker> {
+        FetchDescriptor(predicate: #Predicate { !$0.isHidden }, sortBy: [SortDescriptor(\.order)])
+    }
+}
+
+enum SolaTrackerSchema {
     static let models: [any PersistentModel.Type] = [Tracker.self, TrackerField.self, Entry.self, EntryValue.self]
 }

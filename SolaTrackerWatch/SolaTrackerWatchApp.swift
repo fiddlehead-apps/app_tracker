@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct TallyWatchApp: App {
+struct SolaTrackerWatchApp: App {
     @StateObject private var store = WatchStore.shared
 
     init() {

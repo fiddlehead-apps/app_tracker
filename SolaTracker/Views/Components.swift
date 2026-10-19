@@ -196,7 +196,7 @@ struct WeekStrip: View {
     }
 }
 
-/// Hand-drawn tally marks in groups of five, like the web version.
+/// Hand-drawn tally marks in groups of five.
 struct TallyMarks: View {
     let count: Int
     let color: Color

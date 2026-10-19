@@ -4,7 +4,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 import WidgetKit
 
-/// CSV in the same shape as the web Tally export:
+/// CSV with one row per entry:
 /// tracker, event_date, event_time, tracked_at, note, then one column per field name.
 enum CSV {
     static let baseColumns = ["tracker", "event_date", "event_time", "tracked_at", "note"]
@@ -69,7 +69,7 @@ enum CSV {
         var errorDescription: String? {
             switch self {
             case .unreadable: String(localized: "The file couldn't be read as text.")
-            case .noTrackerColumn: String(localized: "The file needs a \"tracker\" or \"counter\" column and a \"date\" or \"event_date\" column.")
+            case .noTrackerColumn: String(localized: "The file needs a \"tracker\" column and a \"date\" or \"event_date\" column.")
             }
         }
     }
@@ -80,23 +80,15 @@ enum CSV {
         let header = rows.removeFirst().map { $0.trimmingCharacters(in: .whitespaces) }
         let lower = header.map { $0.lowercased() }
         func col(_ names: String...) -> Int? { names.lazy.compactMap { lower.firstIndex(of: $0) }.first }
-        guard let trackerCol = col("tracker", "counter"), let dateCol = col("event_date", "date") else {
+        guard let trackerCol = col("tracker"), let dateCol = col("event_date", "date") else {
             throw ImportError.noTrackerColumn
         }
         let timeCol = col("event_time", "time")
         let trackedCol = col("tracked_at")
         let noteCol = col("note")
         let used = Set([trackerCol, dateCol, timeCol, trackedCol, noteCol].compactMap { $0 })
-        // The web Tally names its columns in English; map them to the same (localized)
-        // field names the "Event" template uses. "person" is the old name of "target".
-        let known = [
-            "location": String(localized: "Location"),
-            "source": String(localized: "Source"),
-            "target": String(localized: "Target"),
-            "person": String(localized: "Target"),
-        ]
         let fieldCols: [(Int, String)] = header.indices.filter { !used.contains($0) }.map { i in
-            (i, known[lower[i]] ?? header[i].prefix(1).uppercased() + header[i].dropFirst())
+            (i, header[i].prefix(1).uppercased() + header[i].dropFirst())
         }
 
         var trackers = (try? context.fetch(FetchDescriptor<Tracker>())) ?? []

@@ -12,7 +12,7 @@ struct FieldTemplate {
 
 struct TrackerTemplate: Identifiable {
     enum Category: CaseIterable, Identifiable {
-        case health, fitness, mind, learning, everyday, classic
+        case health, fitness, mind, learning, everyday
         var id: Self { self }
         var label: String {
             switch self {
@@ -21,7 +21,6 @@ struct TrackerTemplate: Identifiable {
             case .mind: String(localized: "Mind")
             case .learning: String(localized: "Learning")
             case .everyday: String(localized: "Everyday")
-            case .classic: String(localized: "Classic Tally")
             }
         }
     }
@@ -140,8 +139,7 @@ enum Templates {
                 FieldTemplate(name: String(localized: "Category"), kind: .choice, options: [String(localized: "Groceries"), String(localized: "Eating out"), String(localized: "Transport"), String(localized: "Shopping"), String(localized: "Other")]),
                 FieldTemplate(name: String(localized: "Location"), kind: .text),
             ]),
-            // Classic
-            TrackerTemplate(id: "classic", category: .classic, name: String(localized: "Event"), symbol: "number", colorIndex: 0, fields: [
+            TrackerTemplate(id: "event", category: .everyday, name: String(localized: "Event"), symbol: "number", colorIndex: 0, fields: [
                 FieldTemplate(name: String(localized: "Location"), kind: .text),
                 FieldTemplate(name: String(localized: "Source"), kind: .text),
                 FieldTemplate(name: String(localized: "Target"), kind: .text),

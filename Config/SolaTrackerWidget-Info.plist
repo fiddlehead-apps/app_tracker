@@ -3,9 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AppGroupID</key>
-	<string>group.$(BUNDLE_ID_PREFIX).tally</string>
-	<key>CloudKitContainerID</key>
-	<string>iCloud.$(BUNDLE_ID_PREFIX).tally</string>
+	<string>group.$(BUNDLE_ID_PREFIX).tracker</string>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionPointIdentifier</key>
