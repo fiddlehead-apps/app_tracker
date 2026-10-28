@@ -4,10 +4,12 @@
 <dict>
 	<key>AppGroupID</key>
 	<string>group.$(BUNDLE_ID_PREFIX).tracker</string>
-	<key>SolaCloudKitContainer</key>
-	<string>$(SOLA_CLOUDKIT_CONTAINER)</string>
 	<key>CFBundleAllowMixedLocalizations</key>
 	<true/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>SolaCloudKitContainer</key>
+	<string>$(SOLA_CLOUDKIT_CONTAINER)</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

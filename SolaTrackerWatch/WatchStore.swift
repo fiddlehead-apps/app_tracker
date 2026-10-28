@@ -140,7 +140,38 @@ final class WatchStore: NSObject, ObservableObject {
         let cutoff = Calendar.current.date(byAdding: .day, value: -2, to: Calendar.current.startOfDay(for: Date())) ?? .distantPast
         events = stored.filter { $0.date >= cutoff }
         unsent = Set((defaults.stringArray(forKey: "unsent") ?? []).compactMap(UUID.init))
+        #if DEBUG
+        if context == nil, defaults.bool(forKey: "demoData") { context = Self.demoContext() }
+        #endif
     }
+
+    #if DEBUG
+    /// Sample trackers for App Store screenshots, without a paired iPhone (`-demoData YES`).
+    private static func demoContext() -> WatchContext {
+        let de = Locale.current.language.languageCode?.identifier == "de"
+        func option(_ label: String, number: Double? = nil) -> WatchOption {
+            WatchOption(label: label, text: number == nil ? label : "", number: number)
+        }
+        func field(_ name: String, _ options: [WatchOption]) -> WatchField {
+            WatchField(id: UUID(), name: name, options: options, defaultOption: options.first)
+        }
+        func tracker(_ name: String, _ symbol: String, _ color: Int, goal: Int = 0, today: Int, _ fields: [WatchField] = []) -> WatchTracker {
+            WatchTracker(id: UUID(), name: name, symbol: symbol, colorIndex: color, goal: goal,
+                         todayEntryIDs: (0..<today).map { _ in UUID() }, fields: fields)
+        }
+        return WatchContext(trackers: [
+            tracker(de ? "Wasser" : "Water", "drop.fill", 7, goal: 8, today: 5, [
+                field(de ? "Menge" : "Amount", [option("250 ml", number: 250), option("500 ml", number: 500), option("330 ml", number: 330)]),
+                field(de ? "Getränk" : "Drink", [option(de ? "Wasser" : "Water"), option(de ? "Sprudel" : "Sparkling water"), option(de ? "Tee" : "Tea")]),
+            ]),
+            tracker(de ? "Kaffee" : "Coffee", "cup.and.saucer.fill", 3, today: 2),
+            tracker("Meditation", "figure.mind.and.body", 0, goal: 1, today: 1),
+            tracker(de ? "Schlaf" : "Sleep", "bed.double.fill", 5, today: 1),
+            tracker(de ? "Laufen" : "Run", "figure.run", 4, today: 0),
+            tracker(de ? "Lesen" : "Reading", "book.fill", 1, today: 1),
+        ])
+    }
+    #endif
 
     private func save() {
         if let data = WatchCoding.encode(events) { defaults.set(data, forKey: "events") }

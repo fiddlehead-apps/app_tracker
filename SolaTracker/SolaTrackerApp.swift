@@ -9,6 +9,9 @@ struct SolaTrackerApp: App {
 
     init() {
         WatchBridge.shared.start()
+        #if DEBUG
+        DemoData.seedIfRequested(in: Persistence.shared.mainContext)
+        #endif
     }
 
     var body: some Scene {
