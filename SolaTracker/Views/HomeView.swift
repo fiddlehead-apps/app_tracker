@@ -188,7 +188,11 @@ struct TrackerListView: View {
                 }
             } else if trackers.isEmpty {
                 ContentUnavailableView {
-                    Label("Nothing to track yet", systemImage: "number")
+                    Label {
+                        Text("Nothing to track yet")
+                    } icon: {
+                        TallyIllustration()
+                    }
                 } description: {
                     Text("Start from a template like Water or Meditation, or build your own tracker with the fields you need.")
                 } actions: {
